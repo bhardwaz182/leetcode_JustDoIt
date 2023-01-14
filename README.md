@@ -1,1 +1,1 @@
-# leetcode_JustDoIt
+# leetcode_JustDoI
