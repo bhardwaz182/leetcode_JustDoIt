@@ -1,0 +1,42 @@
+def myAtoi(self, s: str) -> int:
+        s1="0123456789"
+        digit = ""
+        sign = True
+        for i in range(len(s)):
+            if s[i] in s1:
+                if digit:
+                    digit+=s[i]
+                else:
+                    if i-1<0:
+                        digit+=s[i]
+                    elif s[i-1]=="-":
+                        digit+=s[i]
+                        sign=False
+                    else:
+                        digit+=s[i]
+            else:
+                if not (s[i]=="+" or s[i]=="-" or s[i]==" "):
+                    break
+                if s[i] == "+" or s[i]=="-":
+                    if i+1<len(s) and s[i+1] not in s1:
+                        break
+                if digit:
+                    break
+        if sign:
+            if digit:
+                val = int(digit)
+            else:
+                val = 0
+            if val>pow(2,31)-1:
+                return pow(2,31)-1
+            else:
+                return val
+        else:
+            if digit:
+                val = -int(digit)
+            else:
+                val = 0
+            if val<-pow(2,31):
+                return -pow(2,31)
+            else:
+                return val
