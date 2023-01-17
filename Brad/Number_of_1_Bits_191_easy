@@ -1,0 +1,10 @@
+def hammingWeight(self, n: int) -> int:
+        n=int(str(bin(n))[2:])
+        count = 0
+
+        while n!=0:
+            rem = n%10
+            if rem:
+                count+=1
+            n=n//10
+        return count
