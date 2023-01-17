@@ -1,0 +1,4 @@
+    def reverseBits(self, n: int) -> int:
+        num = bin(n)[2:]
+        res = (32-len(num))*'0'+num
+        return int(res[::-1],2)
