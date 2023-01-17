@@ -1,0 +1,20 @@
+def intToRoman(self, num: int) -> str:
+        dic = {1:'I',5:'V',10:'X',50:'L',100:'C',500:'D',1000:'M'}
+        li = [1,5,10,50,100,500,1000]
+        idx=0
+        roman = ""
+        for i in str(num)[::-1]:
+            temp = int(i)
+            current = ""
+            if temp<=3:
+                current = temp*dic[li[idx]]
+            elif temp<=5:
+                current = (5-temp)*dic[li[idx]] + dic[li[idx+1]]
+            elif temp<=8:
+                current = dic[li[idx+1]] + (temp-5)*dic[li[idx]]
+            else:
+                current = (10-temp)*dic[li[idx]] + dic[li[idx+2]]
+            # print(current)
+            roman+=current[::-1]
+            idx+=2
+        return roman[::-1]
