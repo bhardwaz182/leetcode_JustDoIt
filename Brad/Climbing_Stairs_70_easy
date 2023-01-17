@@ -1,0 +1,12 @@
+def climbStairs(self, n: int) -> int:
+        dic = {0:1}
+        def stairs(n):
+            if n in dic:
+                return dic[n]
+            if n==0:
+                return 1
+            if n<0:
+                return 0
+            dic[n]=stairs(n-1)+stairs(n-2)
+            return dic[n]
+        return stairs(n)
