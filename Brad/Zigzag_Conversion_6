@@ -1,0 +1,29 @@
+def convert(self, s: str, numRows: int) -> str:
+        first_l = [[i] for i in range(numRows)]
+        sec_l = [i for i in range(numRows,numRows+numRows-2)][::-1]
+        print("len",len(first_l))
+        j=1
+        for i in sec_l:
+            # print(j)
+            first_l[j].append(i)
+            j+=1
+        sep = len(first_l)+len(sec_l)
+        string_f = []
+        
+        for i in first_l:
+            s1=""
+            if len(i) < 2:
+                while i[0]<len(s):
+                    s1+=s[i[0]]
+                    i[0]+=sep
+                string_f.append(s1)
+            else:
+                while i[0]<len(s) or i[1]<len(s):
+                    if i[0]<len(s) and i[1]<len(s):
+                        s1+=s[i[0]]+s[i[1]]
+                    else:
+                        s1+=s[i[0]]
+                    i[0]+=sep
+                    i[1]+=sep
+                string_f.append(s1)
+        return ''.join(string_f)
