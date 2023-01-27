@@ -1,0 +1,12 @@
+def lengthOfLIS(self, nums: List[int]) -> int:
+      dp = [1]*len(nums)
+      for i in range(len(nums)-2,-1,-1):
+          max1 = dp[i]
+          for j in range(i+1,len(nums)-1):
+              print(i,j,nums[i],nums[j])
+              if nums[i]<nums[j]:
+                  if max1<(1+dp[j]):
+                      max1 = 1+dp[j]
+          dp[i] = max1
+      print(dp)
+      return max(dp)
