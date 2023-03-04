@@ -1,0 +1,12 @@
+def isValid(self, s: str) -> bool:
+    l=[]
+    dic = {'(':')','[':']','{':'}'}
+    for i in s:
+        if i in dic:
+            l.append(dic[i])
+        else:
+            if len(l) and l[-1] == i:
+                del l[-1]
+            else:
+                return False
+    return len(l) == 0
