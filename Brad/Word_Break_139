@@ -1,0 +1,21 @@
+def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+    # if s:   
+    #     for i in wordDict:
+    #         if i in s:
+    #             index= s.index(i)
+    #             if not index:
+    #                 if self.wordBreak(s[index+len(i):],wordDict):
+    #                     return True
+    #     else:
+    #         return False
+    # return True
+    dp = [False]*(len(s)+1)
+    dp[-1]=True
+    index = len(s)-1
+    for i in range(len(s)-1,-1,-1):
+        for j in wordDict:
+            if j in s[i:]:
+                if not s[i:].index(j):                    
+                    if not dp[i]:
+                        dp[i] = dp[i+len(j)]
+    return dp[0]
